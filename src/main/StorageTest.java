@@ -1,9 +1,6 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+package main;
+
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.*;
-import java.util.stream.Collectors;
 
 public class StorageTest {
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -21,29 +18,31 @@ public class StorageTest {
 
         String path = "C:\\Users\\Yuriy Vylevko\\Documents\\MyJava\\TestRep\\Storagexx";
         String path2 = "AAASddsadsad";
-        FileStorage str = new FileStorage(path);
-        FileStorage str2 = new FileStorage(path);
-        str.showList();
-        System.out.println("str ="+str.countFiles());
-        str2.removeFile("3feff7ec366cddcd");
-        System.out.println("str ="+str.countFiles());
-        System.out.println(str.getFile("3feff7ec366cddcd").toString());
+        FileStorage str = new FileStorageService(path);
+        generateFiles(100,str);
+
+        str.showAllFilesWithValues();
+        str.countFiles();
+        //System.out.println("str ="+str.countFiles());
+
+        //System.out.println("str ="+str.countFiles());
+        //System.out.println(str.getFile("3feff7ec366cddcd").toString());
         //Thread t1 = new Multi(str);
         //Thread t2 = new Multi(str);
 
         //str.showList();
         System.out.println(str.countFiles());
 
-        //str.refreshList();
+        //str.readAllFileNames();
         //str.showAllFilesKeys();
 
 
 
        // System.out.println("through object");
         //str.showList();
-       // System.out.println(FileStorage.checkKeyLength("AAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
+       // System.out.println(main.FileStorageService.checkKeyLength("AAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
     }
-    public static void generateFiles(int cnt,FileStorage stor){
+    public static void generateFiles(int cnt, FileStorage stor){
         for (int i = 0; i < cnt; i++){
             stor.putFile(Long.toHexString(Double.doubleToLongBits(Math.random())),Long.toHexString(Double.doubleToLongBits(Math.random())));
         }

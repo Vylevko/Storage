@@ -1,4 +1,7 @@
+package main;
+
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class FileStorageElement implements Serializable {
     private String key;
@@ -7,6 +10,9 @@ public class FileStorageElement implements Serializable {
     public FileStorageElement(String key, String value) {
         this.key = key;
         this.value = value;
+    }
+    public FileStorageElement(){
+
     }
 
     public void setValue(String value) {
@@ -20,7 +26,8 @@ public class FileStorageElement implements Serializable {
     public String getValue() {
         return value;
     }
-    public String toString(){
-        return this.key+" = "+this.value;
+
+    public String toString() {
+        return this.key + " = " + this.value ;
     }
 }
