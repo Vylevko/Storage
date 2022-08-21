@@ -11,9 +11,8 @@ import static java.util.stream.Collectors.toList;
 
 public class StorageApplication {
     public static void main(String[] args) throws InterruptedException {
-        String path2 = "/Users/marharytaskokava/yury/My_repositiry/folder";
         String path = "C:\\Users\\Yuriy Vylevko\\Documents\\MyJava\\TestRep\\Storagexx";
-        final var storageService = new TxtFileStorageService(path2);
+        final var storageService = new TxtFileStorageService(path);
 
         saveFindDeleteScenario(storageService);
         concurrencyWithTheSameFileNameScenario(storageService);
