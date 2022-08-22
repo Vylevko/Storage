@@ -1,7 +1,7 @@
-package main;
+package main.Java;
 
 import java.util.ArrayList;
-import java.util.List;
+
 /**
  * Author: vylevko Date: 22.08.2022
  * Storage on disc.

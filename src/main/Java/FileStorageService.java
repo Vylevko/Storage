@@ -1,4 +1,7 @@
-package main;
+package main.Java;
+
+import main.Java.FileStorage;
+import main.Java.FileStorageElement;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
