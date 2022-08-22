@@ -42,7 +42,7 @@ public class FileStorageService implements FileStorage {
         return key;
     }
 
-    // get element with key
+    @Override
     public FileStorageElement getFile(String key) {
         key = checkKeyLength(key);
         File file = getFilePath(key);
@@ -53,10 +53,10 @@ public class FileStorageService implements FileStorage {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new FileStorageElement();
+        return new FileStorageElement(key,"");
     }
 
-    //save file on disc
+    @Override
     public void putFile(String key, String value) {
         key = checkKeyLength(key);
         try (FileOutputStream f = new FileOutputStream(getFilePath(key));) {
@@ -68,18 +68,18 @@ public class FileStorageService implements FileStorage {
         }
     }
 
-    //remove
+    @Override
     public boolean removeFile(String key) {
         return getFilePath(key).delete();
     }
 
-    //listing all elements in format Showing all key = value
+    @Override
     public void showAllFilesWithValues() {
         System.out.println("Showing all key = value");
         readAllFileNames().stream().forEach(e -> System.out.println(getFile(e).toString()));
     }
 
-    //show list of file names
+    @Override
     public void showAllFileNames() {
         System.out.println("Showing list");
         readAllFileNames().stream().forEach(n -> System.out.println(n));
@@ -90,11 +90,11 @@ public class FileStorageService implements FileStorage {
         return new File(this.path + "\\" + key);
     }
 
-    //reread list of file names from disc
+    @Override
     public ArrayList<String> readAllFileNames() {
         return new ArrayList<>(Arrays.asList(getFilePath("").list()));
     }
-
+    @Override
     public long countFiles() {
         return readAllFileNames().stream().count();
     }

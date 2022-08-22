@@ -11,9 +11,6 @@ public class FileStorageElement implements Serializable {
         this.key = key;
         this.value = value;
     }
-    public FileStorageElement(){
-
-    }
 
     public void setValue(String value) {
         this.value = value;

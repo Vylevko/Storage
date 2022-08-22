@@ -5,13 +5,6 @@ import java.io.IOException;
 public class StorageTest {
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        //Storage storage = new Storage();
-        //storage.showStorageKeys();
-        //storage.setStorageKey("One","adyn".getBytes(StandardCharsets.UTF_8));
-        //storage.setStorageKey("two","dwa".getBytes(StandardCharsets.UTF_8));
-        //storage.showStorageKeys();
-        //String path = "C:\\Users\\Yuriy Vylevko\\Music\\Projects\\Promsvyaz\\EC_payments\\TESTS\\results\\MIRAcqECPurchaseTest\\current\\[MIR EC] DEVH2H. 1.1. [Verif] (0) OK, [Auth] OK\\0_OnlineLauncher\\export_tables\\orig";
-        //File dir = new File(path);
 
         //Arrays.stream(dir.listFiles()).sequential().filter(File::isFile).forEach(e->System.out.println(e.getName()));
 
@@ -19,28 +12,27 @@ public class StorageTest {
         String path = "C:\\Users\\Yuriy Vylevko\\Documents\\MyJava\\TestRep\\Storagexx";
         String path2 = "AAASddsadsad";
         FileStorage str = new FileStorageService(path);
-        generateFiles(100,str);
-
-        str.showAllFilesWithValues();
+        Thread t1 = new MultiGenerateFiles(str);
+        Thread t2 = new MultiRemoveFiles(str);
+        t1.start();
+        t1.join();
         str.countFiles();
+        System.out.println(str.getFile("3fedabb781e7885d").toString());
+        System.out.println(str.getFile("3fedabb781e7885daaaaaa").toString());
+        str.getFile("3fedabb781e7885d");
         //System.out.println("str ="+str.countFiles());
 
         //System.out.println("str ="+str.countFiles());
         //System.out.println(str.getFile("3feff7ec366cddcd").toString());
-        //Thread t1 = new Multi(str);
-        //Thread t2 = new Multi(str);
+        Thread t3 = new MultiRemoveFiles(str);
+        t3.start();
+        t2.start();
 
-        //str.showList();
         System.out.println(str.countFiles());
 
-        //str.readAllFileNames();
-        //str.showAllFilesKeys();
-
-
-
-       // System.out.println("through object");
-        //str.showList();
-       // System.out.println(main.FileStorageService.checkKeyLength("AAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
+        t3.join();
+        t2.join();
+        System.out.println(str.countFiles());
     }
     public static void generateFiles(int cnt, FileStorage stor){
         for (int i = 0; i < cnt; i++){
@@ -48,14 +40,27 @@ public class StorageTest {
         }
     }
 
-    private static class Multi extends Thread{
+    private static class MultiGenerateFiles extends Thread{
         private FileStorage storage;
-        private Multi(FileStorage storage){
+        private MultiGenerateFiles(FileStorage storage){
             this.storage = storage;
         }
         @Override
         public void run(){
             generateFiles(100,storage);
+        }
+
+
+    }
+
+    private static class MultiRemoveFiles extends Thread{
+        private FileStorage storage;
+        private MultiRemoveFiles(FileStorage storage){
+            this.storage = storage;
+        }
+        @Override
+        public void run(){
+            storage.readAllFileNames().stream().forEach(storage::removeFile);
         }
 
 
