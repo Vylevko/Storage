@@ -23,7 +23,7 @@ public class FileStorageService implements FileStorage {
 
     //to read storage from folder, if no such folder, create path
     private File openCreateStorage(String path) {
-        File dir = new File(path);
+        var dir = new File(path);
         if (dir.exists()) {
             if (dir.isDirectory()) {
                 System.out.println("Storage opened " + path);
@@ -48,7 +48,7 @@ public class FileStorageService implements FileStorage {
     @Override
     public FileStorageElement getFile(String key) {
         key = checkKeyLength(key);
-        File file = getFilePath(key);
+        var file = getFilePath(key);
         try (FileInputStream fi = new FileInputStream(file);) {
             return new FileStorageElement(key, new String( fi.readAllBytes()));
         } catch (FileNotFoundException e) {
@@ -72,9 +72,7 @@ public class FileStorageService implements FileStorage {
     }
 
     @Override
-    public boolean removeFile(String key) {
-        return getFilePath(key).delete();
-    }
+    public boolean removeFile(String key) { return getFilePath(key).delete(); }
 
     @Override
     public void showAllFilesWithValues() {

@@ -4,6 +4,8 @@ import main.Java.FileStorage;
 import main.Java.FileStorageService;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StorageTest {
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -15,6 +17,7 @@ public class StorageTest {
         String path = "C:\\Users\\Yuriy Vylevko\\Documents\\MyJava\\TestRep\\Storagexx";
         String path2 = "AAASddsadsad";
         FileStorage str = new FileStorageService(path);
+        //List<String> = new str.readAllFileNames();
         Thread t1 = new MultiGenerateFiles(str);
         Thread t2 = new MultiRemoveFiles(str);
         t1.start();
@@ -27,7 +30,7 @@ public class StorageTest {
 
         //System.out.println("str ="+str.countFiles());
         //System.out.println(str.getFile("3feff7ec366cddcd").toString());
-        Thread t3 = new MultiRemoveFiles(str);
+        Thread t3 = new MultiGenerateFiles(str);
         t3.start();
         t2.start();
 
