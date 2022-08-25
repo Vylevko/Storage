@@ -7,6 +7,7 @@ import org.junit.jupiter.api.*;
 import org.mockito.Mockito;
 
 import java.awt.*;
+import java.io.File;
 import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,6 +35,11 @@ class FileStorageServiceTest {
         storage.readAllFileNames().stream().forEach(storage::removeFile);
     }
 
+    @AfterAll
+    public static void removeDir(){
+        File file = new File(path);
+        file.delete();
+    }
 
     @Test
     void getFile() {
