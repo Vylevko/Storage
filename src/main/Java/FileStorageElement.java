@@ -25,6 +25,6 @@ public class FileStorageElement implements Serializable {
     }
 
     public String toString() {
-        return this.key + " = " + this.value ;
+        return this.key + "=" + this.value ;
     }
 }

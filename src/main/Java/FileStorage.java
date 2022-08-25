@@ -1,6 +1,7 @@
 package main.Java;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Author: vylevko Date: 22.08.2022
@@ -25,14 +26,10 @@ public interface FileStorage {
     boolean removeFile(String key);
 
     /**
-     * Showes in console all names and insides
+     * Returns in Map all names and insides
      */
-    void showAllFilesWithValues();
+    Map<String,String> returnAllFilesWithValues();
 
-    /**
-     * Showes in console the list of file names
-     */
-    void showAllFileNames();
 
     /**
      * Returns the list of file names
@@ -43,6 +40,11 @@ public interface FileStorage {
      * Returns the number of all files in storage
      */
     long countFiles();
+
+    /**
+     * Generates key for file
+     */
+    String generateQuasiRandomString();
 
 
 }

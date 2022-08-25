@@ -1,8 +1,5 @@
 package main.Java;
 
-import main.Java.FileStorage;
-import main.Java.FileStorageElement;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -17,9 +14,6 @@ public class FileStorageService implements FileStorage {
         this.path = openCreateStorage(path).getAbsolutePath();
     }
 
-    public void dialog() {
-        Scanner scan = new Scanner("ssss"); //to do
-    }
 
     //to read storage from folder, if no such folder, create path
     private File openCreateStorage(String path) {
@@ -75,15 +69,10 @@ public class FileStorageService implements FileStorage {
     public boolean removeFile(String key) { return getFilePath(key).delete(); }
 
     @Override
-    public void showAllFilesWithValues() {
-        System.out.println("Showing all key = value");
-        readAllFileNames().stream().forEach(e -> System.out.println(getFile(e).toString()));
-    }
-
-    @Override
-    public void showAllFileNames() {
-        System.out.println("Showing list");
-        readAllFileNames().stream().forEach(n -> System.out.println(n));
+    public Map<String, String> returnAllFilesWithValues() {
+        var nameValue = new HashMap<String,String>();
+        readAllFileNames().stream().forEach(e -> nameValue.put(e,getFile(e).getValue()));
+        return nameValue;
     }
 
     //create File object
@@ -98,6 +87,10 @@ public class FileStorageService implements FileStorage {
     @Override
     public long countFiles() {
         return readAllFileNames().stream().count();
+    }
+
+    public  String generateQuasiRandomString() {
+        return UUID.randomUUID().toString();
     }
 
 }
