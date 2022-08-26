@@ -1,8 +1,8 @@
-package Test.Java;
+package test.java;
 
-import main.Java.FileStorage;
-import main.Java.FileStorageElement;
-import main.Java.FileStorageService;
+import main.java.FileStorage;
+import main.java.FileStorageElement;
+import main.java.FileStorageService;
 import org.junit.jupiter.api.*;
 
 

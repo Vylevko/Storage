@@ -1,4 +1,4 @@
-package main.Java;
+package main.java;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Author: vylevko Date: 22.08.2022
  * Storage on disc.
- * Name of the fale equals to key
+ * Name of the file equals to key
  */
 public interface FileStorage {
     /**
