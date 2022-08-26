@@ -5,7 +5,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 
-
 public class FileStorageService implements FileStorage {
 
     private final String path;
@@ -89,7 +88,6 @@ public class FileStorageService implements FileStorage {
     public long countFiles() {
         return readAllFileNames().stream().count();
     }
-
     public  String generateQuasiRandomString() {
         return UUID.randomUUID().toString();
     }
