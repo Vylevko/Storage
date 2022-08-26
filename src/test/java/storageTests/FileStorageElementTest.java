@@ -8,11 +8,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FileStorageElementTest {
     FileStorageElement element;
-
+    /**
+     * Before each test we create FileStorageElement object
+     */
     @BeforeEach
     void createElement(){
         element = new FileStorageElement("AAAAA","BBBBBB");
     }
+
+    /**
+     * Tests for getters and setters
+     */
     @Test
     void setValue() {
         element.setValue("CCCCCC");
@@ -29,6 +35,10 @@ class FileStorageElementTest {
         assertEquals("BBBBBB",element.getValue());
     }
 
+
+    /**
+     * Test for toString method
+     */
     @Test
     void testToString() {
         assertEquals("AAAAA" + "="+ "BBBBBB",element.toString());
