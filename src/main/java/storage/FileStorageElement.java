@@ -1,4 +1,4 @@
-package main.java;
+package storage;
 
 import java.io.Serializable;
 import java.util.Arrays;

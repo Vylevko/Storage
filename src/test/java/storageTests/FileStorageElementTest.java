@@ -1,6 +1,6 @@
-package test.java;
+package storageTests;
 
-import main.java.FileStorageElement;
+import storage.FileStorageElement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
