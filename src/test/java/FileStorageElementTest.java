@@ -1,4 +1,4 @@
-package test.tava;
+package test.java;
 
 import main.java.FileStorageElement;
 import org.junit.jupiter.api.BeforeEach;
